@@ -8,18 +8,32 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+
+
+
+//Railway
 const db = mysql.createConnection({
+  host: 'nozomi.proxy.rlwy.net',
+  user: 'root',
+  password: 'ZiDACevkGUVbIwdUZtwVswdRLkmNALAn',
+  database: 'railway',
+  ssl: { rejectUnauthorized: false }, // ✅ Railway SSL 해결!
+});
+
+
+
+//로컬
+const db1 = mysql.createConnection({
   host: 'localhost',
   user: 'reactui_user',
   password: '1234',
   database: 'reactui_db',
 });
 
+
 db.connect();
-
-
-
-
+db1.connect();
+//db2.connect();
 
 
 app.post('/api/survey', (req, res) => {
@@ -53,6 +67,9 @@ app.post('/api/register', async (req, res) => {
     res.send("회원가입 성공!");
   });
 });
+
+
+
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

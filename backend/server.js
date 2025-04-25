@@ -10,29 +10,45 @@ app.use(bodyParser.json());
 
 
 
+const db = mysql.createConnection({
+
+  host: 'nozomi.proxy.rlwy.net',  // Railway에서 제공한 host
+
+  port: 10904,                       // 포트 확인 (기본 3306)
+
+  user: 'root',                     // 유저명
+
+  password: 'ZiDACevkGUVbIwdUZtwVswdRLkmNALAn',             // 비밀번호
+
+  database: 'railway'          // DB 이름
+
+});
+
+​
+
 
 //Railway
-const db = mysql.createConnection({
-  host: 'nozomi.proxy.rlwy.net',
-  user: 'root',
-  password: 'ZiDACevkGUVbIwdUZtwVswdRLkmNALAn',
-  database: 'railway',
-  ssl: { rejectUnauthorized: false }, // ✅ Railway SSL 해결!
-});
+// const db = mysql.createConnection({
+//   host: 'nozomi.proxy.rlwy.net',
+//   user: 'root',
+//   password: 'ZiDACevkGUVbIwdUZtwVswdRLkmNALAn',
+//   database: 'railway',
+//   ssl: { rejectUnauthorized: false }, // ✅ Railway SSL 해결!
+// });
 
 
 
 //로컬
-const db1 = mysql.createConnection({
-  host: 'localhost',
-  user: 'reactui_user',
-  password: '1234',
-  database: 'reactui_db',
-});
+// const db1 = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'reactui_user',
+//   password: '1234',
+//   database: 'reactui_db',
+// });
 
 
 db.connect();
-db1.connect();
+//db1.connect();
 //db2.connect();
 
 
